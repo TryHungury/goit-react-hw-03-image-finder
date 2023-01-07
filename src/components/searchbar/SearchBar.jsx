@@ -19,7 +19,15 @@ export class SearchBar extends Component {
     const { onSubmit } = this.props;
     const { text } = this.state;
 
-    onSubmit(text.trim())
+    this.setState((prevState)=>{
+      if (prevState.text === "") {
+        return
+      }
+
+      onSubmit(text.trim())
+
+      return ({text: ""})
+    })
   }
 
     render() {

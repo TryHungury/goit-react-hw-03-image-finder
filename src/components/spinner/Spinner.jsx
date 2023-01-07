@@ -1,15 +1,17 @@
-import { Audio } from  'react-loader-spinner'
+import { ThreeCircles } from  'react-loader-spinner'
 
 export const Spinner = () => {
     return (
-    <Audio
-        height = "80"
-        width = "80"
-        radius = "9"
-        color = 'green'
-        ariaLabel = 'three-dots-loading'     
-        wrapperStyle
-        // wrapperClass
+    <ThreeCircles
+        height="70"
+        width="70"
+        wrapperStyle={{display: "flex", justifyContent: "center"}}
+        wrapperClass=""
+        visible={true}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor="#212121"
+        innerCircleColor="#eee"
+        middleCircleColor="#ccc"
     />
     )
 }
