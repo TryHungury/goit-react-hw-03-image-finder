@@ -13,14 +13,12 @@ export class ImageGallery extends Component {
     activeModal: false,
     modalImageView: "",
     user: "",
-    page: 1,
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const searchText = this.props.searchText;
-    const { page } = this.state;
+    const { searchText, page } = this.props;
 
-    if (prevProps.searchText !== searchText || prevState.page !== page) {
+    if (prevProps.searchText !== searchText || prevProps.page !== page) {
     const BASE_URL = "https://pixabay.com/api/";
     const API_KEY = "31470169-9c9cb372459e41628308e9796";
     const imageType = "photo";
@@ -36,10 +34,6 @@ export class ImageGallery extends Component {
     }
 
     return
-  }
-
-  handlePageIncrement = () => {
-    this.setState((prevState)=>({page: prevState.page += 1}))
   }
 
   handleActiveModalToggle = () => {
@@ -60,7 +54,7 @@ export class ImageGallery extends Component {
       <ImageGalleryItem onClick={this.handleOnImageClick} images={images}></ImageGalleryItem>
   </ul>
       {activeSpinner && <Box justifyContent="center"><Spinner ></Spinner></Box>}
-      {images && images.total > 12 && <Button onClick={this.handlePageIncrement}></Button>}
+      {images && images.total > 12 && <Button onClick={this.props.onClick}></Button>}
       {activeModal && <Modal onClick={this.handleActiveModalToggle} url={modalImageView} alt={user}></Modal>}
   </>
 )
