@@ -17,6 +17,7 @@ export class ImageGalleryItem extends Component {
     const { ImageGalleryItem, ImageGalleryItem_image } = ImageGalleryItem_css;
     const { onClick, images} = this.props;
     // const { imagesList } = this.state;
+    // console.log(images)
 
     return ( 
   <>

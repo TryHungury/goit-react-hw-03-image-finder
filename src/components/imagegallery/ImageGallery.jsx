@@ -15,7 +15,7 @@ export class ImageGallery extends Component {
     user: "",
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { searchText, page } = this.props;
 
     if (prevProps.searchText !== searchText || prevProps.page !== page) {
@@ -31,6 +31,13 @@ export class ImageGallery extends Component {
       .then((images) => this.setState({ images }))
       .catch(err => err.json)
       .finally(()=>this.setState({activeSpinner: false}))
+
+      // this.setState((prevState)=>{
+      //   if (prevProps.searchText === searchText && prevProps.page !== page) {
+      //     return ({images: [...prevState.images, ...this.state.images.hits]})
+      //   }
+      //   return
+      // })
     }
 
     return
@@ -42,6 +49,7 @@ export class ImageGallery extends Component {
 
   handleOnImageClick = (modalImageView, user) => {
   this.handleActiveModalToggle();
+
   this.setState({modalImageView})
   this.setState({user})
   }
